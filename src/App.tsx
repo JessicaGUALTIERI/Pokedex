@@ -19,7 +19,7 @@ const App: FunctionComponent = () => {
                             <img src={picture} alt={name}></img>
                         </div>
                         <div className='card-stacked'>
-                            <div className='card-content'>
+                            <div className='card-content center'>
                                 <p>{name}</p>
                                 <p><small>{created.toString()}</small></p>
                             </div>
