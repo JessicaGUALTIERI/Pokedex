@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import Pokemon from '../models/pokemon';
 import formatType from '../helpers/format-type';
-  
+
 type Props = {
   pokemon: Pokemon
 };
@@ -18,7 +18,7 @@ type Form = {
     cp: Field,
     types: Field
 }
-  
+
 const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
   
     const [form, setForm ] = useState<Form> ({
@@ -32,6 +32,10 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
     'Plante', 'Feu', 'Eau', 'Insecte', 'Normal', 'Electrik',
     'Poison', 'Fée', 'Vol', 'Combat', 'Psy'
   ];
+
+  const hasType = (type: string): boolean => {
+    return form.types.value.includes(type);
+  }
    
   return (
     <form>
@@ -46,17 +50,17 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
                 {/* Pokemon name */}
                 <div className="form-group">
                   <label htmlFor="name">Nom</label>
-                  <input id="name" type="text" className="form-control"></input>
+                  <input id="name" type="text" className="form-control" value={form.name.value}></input>
                 </div>
                 {/* Pokemon hp */}
                 <div className="form-group">
                   <label htmlFor="hp">Point de vie</label>
-                  <input id="hp" type="number" className="form-control"></input>
+                  <input id="hp" type="number" className="form-control" value={form.hp.value}></input>
                 </div>
                 {/* Pokemon cp */}
                 <div className="form-group">
                   <label htmlFor="cp">Dégâts</label>
-                  <input id="cp" type="number" className="form-control"></input>
+                  <input id="cp" type="number" className="form-control" value={form.cp.value}></input>
                 </div>
                 {/* Pokemon types */}
                 <div className="form-group">
@@ -64,7 +68,7 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
                   {types.map(type => (
                     <div key={type} style={{marginBottom: '10px'}}>
                       <label>
-                        <input id={type} type="checkbox" className="filled-in"></input>
+                        <input id={type} type="checkbox" className="filled-in" checked={hasType(type)}></input>
                         <span>
                           <p className={formatType(type)}>{ type }</p>
                         </span>
