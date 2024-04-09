@@ -36,6 +36,13 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
   const hasType = (type: string): boolean => {
     return form.types.value.includes(type);
   }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const fieldName: string = e.target.name;
+    const fieldValue: string = e.target.value;
+    const newField: Field = {[fieldName]: {value: fieldValue}};
+    setForm({...form, ...newField});
+  }
    
   return (
     <form>
