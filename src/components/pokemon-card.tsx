@@ -23,7 +23,7 @@ const PokemonCard: FunctionComponent<Props> = ({pokemon, borderColor = "#009688"
 
     return (
     <div className="col s6 m4" onMouseEnter={ showBorder } onMouseLeave={ hideBorder }>
-      <div className="card horizontal" style={ { borderColor : color } }>
+      <div className="card horizontal valign-wrapper" style={ { borderColor : color } }>
         <div className="card-image"> 
           <img src={pokemon.picture} alt={pokemon.name}/>
         </div>
