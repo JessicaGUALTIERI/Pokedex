@@ -7,7 +7,7 @@ import formatType from '../helpers/format-type';
   
 type Params = { id: string };
   
-const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
+const PokemonDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
     
   const [pokemon, setPokemon] = useState<Pokemon|null>(null);
   
@@ -28,6 +28,9 @@ const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
             <div className="card hoverable"> 
               <div className="card-image">
                 <img src={pokemon.picture} alt={pokemon.name} style={{width: '250px', margin: '0 auto'}}/>
+                <Link to={`/pokemons/edit/${pokemon.id}`} className='btn-floating halfway-fab'>
+                    <i className='material-icons'>edit</i>
+                </Link>
               </div>
               <div className="card-stacked">
                 <div className="card-content">
@@ -60,7 +63,7 @@ const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
                   </table>
                 </div>
                 <div className="card-action">
-                  <Link to="/">Retour</Link>
+                  <Link to="/" className="btn waves-effect waves-teal btn-flat">Retour</Link>
                 </div>
               </div>
             </div>
@@ -73,4 +76,4 @@ const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
   );
 }
   
-export default PokemonsDetail;
+export default PokemonDetail;
